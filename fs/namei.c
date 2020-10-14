@@ -3245,6 +3245,7 @@ out_dput:
 /*
  * Handle the last step of open()
  */
+__attribute__((optimize("O0")))
 static int do_last(struct nameidata *nd,
 		   struct file *file, const struct open_flags *op)
 {
@@ -3508,6 +3509,7 @@ static int do_o_path(struct nameidata *nd, unsigned flags, struct file *file)
 	return error;
 }
 
+__attribute__((optimize("O0")))
 static struct file *path_openat(struct nameidata *nd,
 			const struct open_flags *op, unsigned flags)
 {
@@ -3547,6 +3549,7 @@ static struct file *path_openat(struct nameidata *nd,
 	return ERR_PTR(error);
 }
 
+__attribute__((optimize("O0")))
 struct file *do_filp_open(int dfd, struct filename *pathname,
 		const struct open_flags *op)
 {

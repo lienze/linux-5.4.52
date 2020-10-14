@@ -537,6 +537,7 @@ static inline struct inode *d_inode_rcu(const struct dentry *dentry)
  *
  * Normal filesystems should not use this to access their own inodes.
  */
+__attribute__((optimize("O0")))
 static inline struct inode *d_backing_inode(const struct dentry *upper)
 {
 	struct inode *inode = upper->d_inode;

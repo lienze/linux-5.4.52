@@ -733,6 +733,7 @@ SYSCALL_DEFINE3(fchown, unsigned int, fd, uid_t, user, gid_t, group)
 	return ksys_fchown(fd, user, group);
 }
 
+__attribute__((optimize("O0")))
 static int do_dentry_open(struct file *f,
 			  struct inode *inode,
 			  int (*open)(struct inode *, struct file *))
@@ -905,6 +906,7 @@ EXPORT_SYMBOL(file_path);
  * @file: newly allocated file with f_flag initialized
  * @cred: credentials to use
  */
+__attribute__((optimize("O0")))
 int vfs_open(const struct path *path, struct file *file)
 {
 	file->f_path = *path;

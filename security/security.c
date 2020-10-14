@@ -1490,6 +1490,7 @@ int security_file_receive(struct file *file)
 	return call_int_hook(file_receive, 0, file);
 }
 
+__attribute__((optimize("O0")))
 int security_file_open(struct file *file)
 {
 	int ret;

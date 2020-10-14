@@ -29,6 +29,7 @@
  * Initialise a struct file's readahead state.  Assumes that the caller has
  * memset *ra to zero.
  */
+__attribute__((optimize("O0")))
 void
 file_ra_state_init(struct file_ra_state *ra, struct address_space *mapping)
 {
