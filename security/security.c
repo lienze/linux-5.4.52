@@ -1215,6 +1215,7 @@ int security_inode_setattr(struct dentry *dentry, struct iattr *attr)
 }
 EXPORT_SYMBOL_GPL(security_inode_setattr);
 
+__attribute__((optimize("O0")))
 int security_inode_getattr(const struct path *path)
 {
 	if (unlikely(IS_PRIVATE(d_backing_inode(path->dentry))))

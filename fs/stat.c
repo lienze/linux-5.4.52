@@ -30,6 +30,7 @@
  * found on the VFS inode structure.  This is the default if no getattr inode
  * operation is supplied.
  */
+__attribute__((optimize("O0")))
 void generic_fillattr(struct inode *inode, struct kstat *stat)
 {
 	stat->dev = inode->i_sb->s_dev;
@@ -61,6 +62,7 @@ EXPORT_SYMBOL(generic_fillattr);
  * filehandle lookup code, which uses only the inode number and returns no
  * attributes to any user.  Any other code probably wants vfs_getattr.
  */
+__attribute__((optimize("O0")))
 int vfs_getattr_nosec(const struct path *path, struct kstat *stat,
 		      u32 request_mask, unsigned int query_flags)
 {
@@ -107,6 +109,7 @@ EXPORT_SYMBOL(vfs_getattr_nosec);
  *
  * 0 will be returned on success, and a -ve error code if unsuccessful.
  */
+__attribute__((optimize("O0")))
 int vfs_getattr(const struct path *path, struct kstat *stat,
 		u32 request_mask, unsigned int query_flags)
 {
@@ -165,6 +168,7 @@ EXPORT_SYMBOL(vfs_statx_fd);
  *
  * 0 will be returned on success, and a -ve error code if unsuccessful.
  */
+__attribute__((optimize("O0")))
 int vfs_statx(int dfd, const char __user *filename, int flags,
 	      struct kstat *stat, u32 request_mask)
 {

@@ -37,6 +37,7 @@
 } while (0)
 
 
+__attribute__((optimize("O0")))
 int iterate_dir(struct file *file, struct dir_context *ctx)
 {
 	struct inode *inode = file_inode(file);
