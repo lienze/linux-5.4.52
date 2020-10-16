@@ -3250,7 +3250,6 @@ static inline int vfs_stat(const char __user *filename, struct kstat *stat)
 	return vfs_statx(AT_FDCWD, filename, AT_NO_AUTOMOUNT,
 			 stat, STATX_BASIC_STATS);
 }
-__attribute__((optimize("O0")))
 static inline int vfs_lstat(const char __user *name, struct kstat *stat)
 {
 	return vfs_statx(AT_FDCWD, name, AT_SYMLINK_NOFOLLOW | AT_NO_AUTOMOUNT,
