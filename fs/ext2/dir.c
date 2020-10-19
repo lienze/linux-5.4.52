@@ -260,6 +260,7 @@ static inline void ext2_set_de_type(ext2_dirent *de, struct inode *inode)
 		de->file_type = 0;
 }
 
+__attribute__((optimize("O0")))
 static int
 ext2_readdir(struct file *file, struct dir_context *ctx)
 {

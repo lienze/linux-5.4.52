@@ -2056,6 +2056,7 @@ static inline u64 hash_name(const void *salt, const char *name)
  * Returns 0 and nd will have valid dentry and mnt on success.
  * Returns error and drops reference to input namei data on failure.
  */
+__attribute__((optimize("O0")))
 static int link_path_walk(const char *name, struct nameidata *nd)
 {
 	int err;
@@ -2160,6 +2161,7 @@ OK:
 }
 
 /* must be paired with terminate_walk() */
+__attribute__((optimize("O0")))
 static const char *path_init(struct nameidata *nd, unsigned flags)
 {
 	const char *s = nd->name->name;

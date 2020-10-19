@@ -2753,6 +2753,7 @@ static struct page *wait_on_page_read(struct page *page)
 	return page;
 }
 
+__attribute__((optimize("O0")))
 static struct page *do_read_cache_page(struct address_space *mapping,
 				pgoff_t index,
 				int (*filler)(void *, struct page *),
