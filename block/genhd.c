@@ -1592,6 +1592,7 @@ void set_disk_ro(struct gendisk *disk, int flag)
 
 EXPORT_SYMBOL(set_disk_ro);
 
+__attribute__((optimize("O0")))
 int bdev_read_only(struct block_device *bdev)
 {
 	if (!bdev)

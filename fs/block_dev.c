@@ -119,6 +119,7 @@ static void set_init_blocksize(struct block_device *bdev)
 	bdev->bd_inode->i_blkbits = blksize_bits(bsize);
 }
 
+__attribute__((optimize("O0")))
 int set_blocksize(struct block_device *bdev, int size)
 {
 	/* Size must be a power of two, and between 512 and PAGE_SIZE */
@@ -141,6 +142,7 @@ int set_blocksize(struct block_device *bdev, int size)
 
 EXPORT_SYMBOL(set_blocksize);
 
+__attribute__((optimize("O0")))
 int sb_set_blocksize(struct super_block *sb, int size)
 {
 	if (set_blocksize(sb->s_bdev, size))
@@ -1692,6 +1694,7 @@ static int __blkdev_get(struct block_device *bdev, fmode_t mode, int for_part)
  * RETURNS:
  * 0 on success, -errno on failure.
  */
+__attribute__((optimize("O0")))
 int blkdev_get(struct block_device *bdev, fmode_t mode, void *holder)
 {
 	struct block_device *whole = NULL;
@@ -1759,6 +1762,7 @@ EXPORT_SYMBOL(blkdev_get);
  * RETURNS:
  * Pointer to block_device on success, ERR_PTR(-errno) on failure.
  */
+__attribute__((optimize("O0")))
 struct block_device *blkdev_get_by_path(const char *path, fmode_t mode,
 					void *holder)
 {
@@ -2158,6 +2162,7 @@ EXPORT_SYMBOL(ioctl_by_bdev);
  * namespace if possible and return it.  Return ERR_PTR(error)
  * otherwise.
  */
+__attribute__((optimize("O0")))
 struct block_device *lookup_bdev(const char *pathname)
 {
 	struct block_device *bdev;
