@@ -415,6 +415,7 @@ EXPORT_SYMBOL(mpage_readpages);
 /*
  * This isn't called much at all
  */
+__attribute__((optimize("O0")))
 int mpage_readpage(struct page *page, get_block_t get_block)
 {
 	struct mpage_readpage_args args = {

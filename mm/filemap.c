@@ -1218,6 +1218,7 @@ static inline int wait_on_page_bit_common(wait_queue_head_t *q,
 	return ret;
 }
 
+__attribute__((optimize("O0")))
 void wait_on_page_bit(struct page *page, int bit_nr)
 {
 	wait_queue_head_t *q = page_waitqueue(page);
@@ -1522,6 +1523,7 @@ EXPORT_SYMBOL(page_cache_prev_miss);
  *
  * Return: the found page or shadow entry, %NULL if nothing is found.
  */
+__attribute__((optimize("O0")))
 struct page *find_get_entry(struct address_space *mapping, pgoff_t offset)
 {
 	XA_STATE(xas, &mapping->i_pages, offset);
@@ -1626,6 +1628,7 @@ EXPORT_SYMBOL(find_lock_entry);
  *
  * Return: the found page or %NULL otherwise.
  */
+__attribute__((optimize("O0")))
 struct page *pagecache_get_page(struct address_space *mapping, pgoff_t offset,
 	int fgp_flags, gfp_t gfp_mask)
 {
@@ -2741,6 +2744,7 @@ EXPORT_SYMBOL(filemap_page_mkwrite);
 EXPORT_SYMBOL(generic_file_mmap);
 EXPORT_SYMBOL(generic_file_readonly_mmap);
 
+__attribute__((optimize("O0")))
 static struct page *wait_on_page_read(struct page *page)
 {
 	if (!IS_ERR(page)) {
