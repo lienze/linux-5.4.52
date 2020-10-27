@@ -630,6 +630,7 @@ static inline int add_to_page_cache(struct page *page,
 	return error;
 }
 
+// 确定节点占用几个页。
 static inline unsigned long dir_pages(struct inode *inode)
 {
 	return (unsigned long)(inode->i_size + PAGE_SIZE - 1) >>

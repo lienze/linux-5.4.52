@@ -31,6 +31,7 @@ void set_fs_root(struct fs_struct *fs, const struct path *path)
  * Replace the fs->{pwdmnt,pwd} with {mnt,dentry}. Put the old values.
  * It can block.
  */
+__attribute__((optimize("O0")))
 void set_fs_pwd(struct fs_struct *fs, const struct path *path)
 {
 	struct path old_pwd;
@@ -109,6 +110,7 @@ void exit_fs(struct task_struct *tsk)
 	}
 }
 
+__attribute__((optimize("O0")))
 struct fs_struct *copy_fs_struct(struct fs_struct *old)
 {
 	struct fs_struct *fs = kmem_cache_alloc(fs_cachep, GFP_KERNEL);

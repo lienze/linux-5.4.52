@@ -610,6 +610,9 @@ struct ext2_dir_entry_2 {
  */
 #define EXT2_DIR_PAD		 	4
 #define EXT2_DIR_ROUND 			(EXT2_DIR_PAD - 1)
+
+//↓↓↓ 根据name_len，加上边界，确定占用空间。为了保证是4的倍数，
+//做~EXT2_DIR_ROUND运算
 #define EXT2_DIR_REC_LEN(name_len)	(((name_len) + 8 + EXT2_DIR_ROUND) & \
 					 ~EXT2_DIR_ROUND)
 #define EXT2_MAX_REC_LEN		((1<<16)-1)

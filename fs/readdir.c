@@ -307,6 +307,7 @@ struct getdents_callback64 {
 	int error;
 };
 
+__attribute__((optimize("O0")))
 static int filldir64(struct dir_context *ctx, const char *name, int namlen,
 		     loff_t offset, u64 ino, unsigned int d_type)
 {
@@ -351,6 +352,7 @@ efault:
 	return -EFAULT;
 }
 
+//__attribute__((optimize("O0")))
 int ksys_getdents64(unsigned int fd, struct linux_dirent64 __user *dirent,
 		    unsigned int count)
 {

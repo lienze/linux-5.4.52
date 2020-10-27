@@ -1423,6 +1423,7 @@ fail_nomem:
 	return retval;
 }
 
+__attribute__((optimize("O0")))
 static int copy_fs(unsigned long clone_flags, struct task_struct *tsk)
 {
 	struct fs_struct *fs = current->fs;
@@ -1757,6 +1758,7 @@ static __always_inline void delayed_free_task(struct task_struct *tsk)
  * parts of the process environment (as per the clone
  * flags). The actual kick-off is left to the caller.
  */
+__attribute__((optimize("O0")))
 static __latent_entropy struct task_struct *copy_process(
 					struct pid *pid,
 					int trace,

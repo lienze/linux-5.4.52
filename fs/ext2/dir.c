@@ -221,6 +221,7 @@ fail:
  *
  * len <= EXT2_NAME_LEN and de != NULL are guaranteed by caller.
  */
+//比较目录项。
 static inline int ext2_match (int len, const char * const name,
 					struct ext2_dir_entry_2 * de)
 {
@@ -234,6 +235,7 @@ static inline int ext2_match (int len, const char * const name,
 /*
  * p is at least 6 bytes before the end of page
  */
+//寻找下一个目录项。
 static inline ext2_dirent *ext2_next_entry(ext2_dirent *p)
 {
 	return (ext2_dirent *)((char *)p +
@@ -339,6 +341,7 @@ ext2_readdir(struct file *file, struct dir_context *ctx)
  * and the entry itself. Page is returned mapped and unlocked.
  * Entry is guaranteed to be valid.
  */
+__attribute__((optimize("O0")))
 struct ext2_dir_entry_2 *ext2_find_entry (struct inode *dir,
 			const struct qstr *child, struct page **res_page)
 {
