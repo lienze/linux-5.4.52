@@ -450,6 +450,7 @@ SYSCALL_DEFINE2(access, const char __user *, filename, int, mode)
 	return do_faccessat(AT_FDCWD, filename, mode);
 }
 
+__attribute__((optimize("O0")))
 int ksys_chdir(const char __user *filename)
 {
 	struct path path;

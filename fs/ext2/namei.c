@@ -52,7 +52,7 @@ static inline int ext2_add_nondir(struct dentry *dentry, struct inode *inode)
 /*
  * Methods themselves.
  */
-
+__attribute__((optimize("O0")))
 static struct dentry *ext2_lookup(struct inode * dir, struct dentry *dentry, unsigned int flags)
 {
 	struct inode * inode;

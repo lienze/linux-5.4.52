@@ -2871,6 +2871,7 @@ out:
  *
  * Return: up to date page on success, ERR_PTR() on failure.
  */
+__attribute__((optimize("O0")))
 struct page *read_cache_page(struct address_space *mapping,
 				pgoff_t index,
 				int (*filler)(void *, struct page *),

@@ -128,6 +128,7 @@ static int no_open(struct inode *inode, struct file *file)
  * These are initializations that need to be done on every inode
  * allocation as the fields are not initialised by slab allocation.
  */
+__attribute__((optimize("O0")))
 int inode_init_always(struct super_block *sb, struct inode *inode)
 {
 	static const struct inode_operations empty_iops;
@@ -222,6 +223,7 @@ static void i_callback(struct rcu_head *head)
 		free_inode_nonrcu(inode);
 }
 
+__attribute__((optimize("O0")))
 static struct inode *alloc_inode(struct super_block *sb)
 {
 	const struct super_operations *ops = sb->s_op;
@@ -1170,6 +1172,7 @@ EXPORT_SYMBOL(iget5_locked);
  * hashed, and with the I_NEW flag set.  The file system gets to fill it in
  * before unlocking it via unlock_new_inode().
  */
+__attribute__((optimize("O0")))
 struct inode *iget_locked(struct super_block *sb, unsigned long ino)
 {
 	struct hlist_head *head = inode_hashtable + hash(sb, ino);
