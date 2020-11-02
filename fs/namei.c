@@ -1632,6 +1632,7 @@ static int lookup_fast(struct nameidata *nd,
 }
 
 /* Fast lookup failed, do it the slow way */
+__attribute__((optimize("O0")))
 static struct dentry *__lookup_slow(const struct qstr *name,
 				    struct dentry *dir,
 				    unsigned int flags)
@@ -1671,6 +1672,7 @@ again:
 	return dentry;
 }
 
+__attribute__((optimize("O0")))
 static struct dentry *lookup_slow(const struct qstr *name,
 				  struct dentry *dir,
 				  unsigned int flags)
@@ -1777,6 +1779,7 @@ static inline int step_into(struct nameidata *nd, struct path *path,
 	return pick_link(nd, path, inode, seq);
 }
 
+__attribute__((optimize("O0")))
 static int walk_component(struct nameidata *nd, int flags)
 {
 	struct path path;

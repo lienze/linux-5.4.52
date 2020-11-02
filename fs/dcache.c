@@ -2995,6 +2995,7 @@ out_err:
  * will only occur during atomic_open. So we need to check for the dentry
  * being already hashed only in the final case.
  */
+__attribute__((optimize("O0")))
 struct dentry *d_splice_alias(struct inode *inode, struct dentry *dentry)
 {
 	if (IS_ERR(inode))

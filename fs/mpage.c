@@ -153,6 +153,7 @@ struct mpage_readpage_args {
  * represent the validity of its disk mapping and to decide when to do the next
  * get_block() call.
  */
+__attribute__((optimize("O0")))
 static struct bio *do_mpage_readpage(struct mpage_readpage_args *args)
 {
 	struct page *page = args->page;

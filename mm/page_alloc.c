@@ -4714,6 +4714,7 @@ static inline void finalise_ac(gfp_t gfp_mask, struct alloc_context *ac)
 /*
  * This is the 'heart' of the zoned buddy allocator.
  */
+__attribute__((optimize("O0")))
 struct page *
 __alloc_pages_nodemask(gfp_t gfp_mask, unsigned int order, int preferred_nid,
 							nodemask_t *nodemask)
