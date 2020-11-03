@@ -1648,6 +1648,7 @@ static qsize_t inode_get_rsv_space(struct inode *inode)
 /*
  * This operation can block, but only after everything is updated
  */
+__attribute__((optimize("O0")))
 int __dquot_alloc_space(struct inode *inode, qsize_t number, int flags)
 {
 	int cnt, ret = 0, index;

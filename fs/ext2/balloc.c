@@ -409,6 +409,7 @@ static inline int rsv_is_empty(struct ext2_reserve_window *rsv)
  *
  * Needs truncate_mutex protection prior to calling this function.
  */
+__attribute__((optimize("O0")))
 void ext2_init_block_alloc_info(struct inode *inode)
 {
 	struct ext2_inode_info *ei = EXT2_I(inode);
@@ -1227,6 +1228,7 @@ int ext2_data_block_valid(struct ext2_sb_info *sbi, ext2_fsblk_t start_blk,
  * bitmap, and then for any free bit if that fails.
  * This function also updates quota and i_blocks field.
  */
+__attribute__((optimize("O0")))
 ext2_fsblk_t ext2_new_blocks(struct inode *inode, ext2_fsblk_t goal,
 		    unsigned long *count, int *errp)
 {

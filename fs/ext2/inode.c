@@ -160,6 +160,7 @@ static inline int verify_chain(Indirect *from, Indirect *to)
  * get there at all.
  */
 
+__attribute__((optimize("O0")))
 static int ext2_block_to_path(struct inode *inode,
 			long i_block, int offsets[4], int *boundary)
 {
@@ -231,6 +232,7 @@ static int ext2_block_to_path(struct inode *inode,
  *	or when it reads all @depth-1 indirect blocks successfully and finds
  *	the whole chain, all way to the data (returns %NULL, *err == 0).
  */
+__attribute__((optimize("O0")))
 static Indirect *ext2_get_branch(struct inode *inode,
 				 int depth,
 				 int *offsets,
@@ -290,7 +292,7 @@ no_block:
  *
  *	Caller must make sure that @ind is valid and will stay that way.
  */
-
+__attribute__((optimize("O0")))
 static ext2_fsblk_t ext2_find_near(struct inode *inode, Indirect *ind)
 {
 	struct ext2_inode_info *ei = EXT2_I(inode);
@@ -326,7 +328,7 @@ static ext2_fsblk_t ext2_find_near(struct inode *inode, Indirect *ind)
  *
  *	Returns preferred place for a block (the goal).
  */
-
+__attribute__((optimize("O0")))
 static inline ext2_fsblk_t ext2_find_goal(struct inode *inode, long block,
 					  Indirect *partial)
 {
@@ -358,6 +360,7 @@ static inline ext2_fsblk_t ext2_find_goal(struct inode *inode, long block,
  *	return the total number of blocks to be allocate, including the
  *	direct and indirect blocks.
  */
+__attribute__((optimize("O0")))
 static int
 ext2_blks_to_allocate(Indirect * branch, int k, unsigned long blks,
 		int blocks_to_boundary)
@@ -395,6 +398,7 @@ ext2_blks_to_allocate(Indirect * branch, int k, unsigned long blks,
  *	@blks:	on return it will store the total number of allocated
  *		direct blocks
  */
+__attribute__((optimize("O0")))
 static int ext2_alloc_blocks(struct inode *inode,
 			ext2_fsblk_t goal, int indirect_blks, int blks,
 			ext2_fsblk_t new_blocks[4], int *err)
@@ -474,7 +478,7 @@ failed_out:
  *	ext2_alloc_block() (normally -ENOSPC). Otherwise we set the chain
  *	as described above and return 0.
  */
-
+__attribute__((optimize("O0")))
 static int ext2_alloc_branch(struct inode *inode,
 			int indirect_blks, int *blks, ext2_fsblk_t goal,
 			int *offsets, Indirect *branch)
@@ -620,6 +624,7 @@ static void ext2_splice_branch(struct inode *inode,
  * return = 0, if plain lookup failed.
  * return < 0, error case.
  */
+__attribute__((optimize("O0")))
 static int ext2_get_blocks(struct inode *inode,
 			   sector_t iblock, unsigned long maxblocks,
 			   u32 *bno, bool *new, bool *boundary,
@@ -779,6 +784,7 @@ cleanup:
 	return err;
 }
 
+__attribute__((optimize("O0")))
 int ext2_get_block(struct inode *inode, sector_t iblock,
 		struct buffer_head *bh_result, int create)
 {
